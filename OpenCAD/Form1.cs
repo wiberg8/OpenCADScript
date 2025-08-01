@@ -25,6 +25,11 @@ namespace OpenCAD
         {
             try
             {
+                if (File.Exists(txtOutput.Text))
+                {
+                    MessageBox.Show($"Output {txtOutput.Text} already exists");
+                    return;
+                }
                 string scriptText = textScript.Text;
 
                 string outputFileText = string.Empty;
@@ -43,7 +48,6 @@ namespace OpenCAD
                         has = true;
                     }
                     outputFileText += tmp;
-
                 }
 
                 File.WriteAllText(txtOutput.Text, outputFileText);
